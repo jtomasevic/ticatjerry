@@ -1,0 +1,119 @@
+
+<div class="navbar-fixed-top ticat-nav noprint" id="ticat-navigation">
+    <header class="clearfix">
+        <a href="" id="logo">
+            <img src="img/helmet_logo2.jpg" alt="" height="40px">
+        </a>
+        <span id="page-title">Search:</span>
+        <div class="search-box">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="for: {{searchCriteria.searchFor.title}}">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span></button>
+                    <button type="button" class="btn btn-default" ng-click="search()"> <span class="glyphicon glyphicon-search"></span> </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" >
+                        <li ng-repeat="s in searchFor">
+                            <a href="" ng-click="chooseSearchFor(s)" class="nav-link" >
+                                {{s.title}}
+                                <i class="fa fa-angle-right lg pull-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--<a href="index.html" class="log-out pull-right">Log Out</a>-->
+        <!--<p class="pull-right user-email ng-binding">Hello Djordje</p>-->
+    </header>
+</div>
+
+<filters>
+
+</filters>
+
+
+<style id="top_global_header">
+    #ticat-navigation{
+        height: 55px;
+        background-color: #34383c;
+    }
+    #logo{
+        float: left;
+        width: 44px;
+        height: 44px;
+        padding-left: 8px;
+        padding-top: 8px;
+    }
+    #page-title{
+        margin-top: 15px;
+        margin-left: 20px;
+        margin-right: 12px;
+        color: #858b91;
+        font-size: 18px;
+        float: left;
+    }
+    .search-box{
+        padding-top: 11px;
+        padding-left: 0px;
+        margin-left: 10px;
+        max-width: 800px;
+
+    }
+    .sub-sets{
+        margin-top: 55px;
+
+    }
+    .sub-sets-header{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .sub-sets-header-title{
+        background-color: #91C46B;
+        height: 40px;
+        padding-top: 8px;
+    }
+    .sub-sets-header-title-text{
+        color: #fafafa;
+        font-size: 16px;
+        padding-left: 12px;
+    }
+    .include-set-chbox{
+        color: #fafafa;
+        font-size: 18px;
+        margin-top: 2px;
+        padding-right: 12px;
+    }
+    .sub-set-item{
+        padding-top: 15px;
+        padding-left: 12px;
+        /*height: 44px;*/
+        /*max-height: 400px;*/
+        /*height: 40px;*/
+    }
+    .form-control.set-filter{
+        max-width: 60%;
+        min-width: 50px;
+        float: left;
+        margin-right: 10px;
+    }
+    .set-filter-title {
+        color: #34383c;
+        padding-top: 6px;
+        font-size: 16px;
+        margin-left: 8px;
+
+    }
+    .set-filter-title > a{
+        color: #34383c;
+    }
+    .set-filter-title > a:hover, .set-filter-title > a:active, .set-filter-title > a:visited, .set-filter-title > a:focus{
+        text-decoration: none;
+    }
+    .sub-set-on-off{
+        margin-top: -23px;
+        margin-right: 8px;
+        font-size: 16px;
+        color: #34383c;
+    }
+</style>

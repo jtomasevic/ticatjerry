@@ -1,0 +1,358 @@
+<ticket-view-nav>
+
+</ticket-view-nav>
+
+<div class="container ticket-view">
+    <!--<div class="row ">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="ticket-section-header">PROBLEM DESCRIPTION-->
+
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+                <!--<textarea class="form-control" rows="4">-->
+
+                <!--</textarea>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="ticket-section-header">Comment-->
+
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+                <!--<textarea class="form-control" rows="4">-->
+
+                <!--</textarea>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="row ">
+    <!--REQUEST-->
+    <div class="panel panel-default">
+        <div class="ticket-section-header">REQUEST
+            <!--<button class="btn btn-link list-item-link">-->
+            <!--<i class="fa fa-search fa-lg"></i>-->
+            <!--</button>-->
+            <button class="btn btn-link list-item-link pull-right">
+                See history <i class="fa fa-history fa-lg"></i>
+            </button>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <label>Request no</label>
+                    <label class="list-item-label pull-right">{{ticket.request_no}}</label>
+                </li>
+                <li class="list-group-item">
+                    <label>Status</label>
+                    <label class="list-item-label pull-right">{{ticket.status}}</label>
+                </li>
+                <li class="list-group-item" style="max-height: 200px; height: 100px;">
+                    <label>Description</label>
+                    <label class="list-item-label pull-right">{{ticket.description}}</label>
+                </li>
+                <li class="list-group-item">
+                    <label>Comment</label>
+                    <label class="list-item-label pull-right">{{ticket.comment}}</label>
+                </li>
+                <li class="list-group-item">
+                    <label>Opened</label>
+                    <label class="list-item-label pull-right">{{ticket.date_opened}}</label>
+                </li>
+                <li class="list-group-item">
+                    <label>Dispatched</label>
+                    <label class="list-item-label pull-right">{{ticket.date_allocated}}</label>
+                </li>
+                <li class="list-group-item">
+                    <label>Latest time</label>
+                    <label class="list-item-label pull-right">{{ticket.date_dispatched}}</label>
+                </li>
+
+                <li class="list-group-item">
+                    <label>Deadline</label>
+                    <label class="list-item-label pull-right">{{ticket.date_to_solve}}</label>
+                </li>
+
+                <!--<li class="list-group-item">-->
+                <!--<label>Response target</label>-->
+                <!--<label class="list-item-label pull-right">{{ticket.agreement_status}}</label>-->
+                <!--</li>-->
+                <!--<li class="list-group-item">-->
+                <!--<label>Instalation date</label>-->
+                <!--<label class="list-item-label pull-right">{{ticket.agreement_status}}</label>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+        <!--CUSTOMER-->
+        <div class="panel panel-default">
+            <div class="ticket-section-header">CUSTOMER
+                <button class="btn btn-link list-item-link">
+                    <i class="fa fa-search fa-lg"></i>
+                </button>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <label>Full name </label>
+                        <label class="list-item-label pull-right">{{ticket.customer.name}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Address</label>
+                        <label class="list-item-label pull-right">{{ticket.customer.address}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Email</label>
+                        <label class="list-item-label pull-right">{{ticket.customer.email}}</label>
+                    </li>
+                    <li class="list-group-item" style="background-color: #ecf0f1; color: #95a5a6; font-weight: normal;">
+                        <label style="font-weight: normal;">CONTACT: {{ticket.customer.contact_person.name}}</label >
+                    </li>
+                    <li class="list-group-item">
+                        <label>Email</label>
+                        <label class="list-item-label pull-right">{{ticket.customer.contact_person.email}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Phone</label>
+                        <label class="list-item-label pull-right">{{ticket.customer.contact_person.phone}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Mobile</label>
+                        <label class="list-item-label pull-right">{{ticket.customer.mobile}}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--AGREEMENT-->
+        <div class="panel panel-default">
+            <div class="ticket-section-header">AGREEMENT
+                <!--<button class="btn btn-link list-item-link">-->
+                    <!--<i class="fa fa-search fa-lg"></i>-->
+                <!--</button>-->
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <label>Number</label>
+                        <label class="list-item-label pull-right">{{ticket.agreement.number}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Expiration</label>
+                        <label class="list-item-label pull-right">{{ticket.agreement.date_expire}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Response target</label>
+                        <label class="list-item-label pull-right">{{ticket.agreement.response_target_seconds}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Type</label>
+                        <label class="list-item-label pull-right">{{ticket.agreement.description}}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <!--MACHINE-->
+        <div class="panel panel-default">
+            <div class="ticket-section-header">MACHINE
+                <!--<button class="btn btn-link list-item-link">-->
+                    <!--<i class="fa fa-search fa-lg"></i>-->
+                <!--</button>-->
+                <button class="btn btn-link list-item-link pull-right">
+                    See history <i class="fa fa-history fa-lg"></i>
+                </button>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <label>Model</label>
+                        <label class="list-item-label pull-right">{{ticket.product.name}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>ID number</label>
+                        <label class="list-item-label pull-right">{{ticket.product.serial_number}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Asset number</label>
+                        <label class="list-item-label pull-right">{{ticket.product.asset_number}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Location</label>
+                        <label class="list-item-label pull-right">{{ticket.product.location}}</label>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <!--SOLUTION-->
+        <div class="panel panel-default">
+            <div class="ticket-section-header">SOLUTION
+                <!--<button class="btn btn-link list-item-link">-->
+                    <!--<i class="fa fa-search fa-lg"></i>-->
+                <!--</button>-->
+                <!--<button class="btn btn-link list-item-link pull-right">-->
+                    <!--See history <i class="fa fa-history fa-lg"></i>-->
+                <!--</button>-->
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <label>Employee</label>
+                        <label class="list-item-label pull-right">{{ticket.solution.employee}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Arrival</label>
+                        <label class="list-item-label pull-right">{{ticket.date_arrived}}</label>
+                    </li>
+
+                    <li class="list-group-item">
+                        <label>Finished</label>
+                        <label class="list-item-label pull-right">{{ticket.date_finished}}</label>
+                    </li>
+
+                    <li class="list-group-item">
+                        <label>B/W counter</label>
+                        <label class="list-item-label pull-right">{{ticket.solution.bw_counter}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Color counter</label>
+                        <label class="list-item-label pull-right">{{ticket.solution.color_counter}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>A3</label>
+                        <label class="list-item-label pull-right">{{ticket.solution.a3_counter}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Total</label>
+                        <label class="list-item-label pull-right">{{ticket.solution.total_counter}}</label>
+                    </li>
+                    <li class="list-group-item">
+                        <label>Comment</label>
+                        <label class="list-item-label pull-right">{{ticket.solution.comment}}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+    body{
+        background-color: #ecf0f1;
+        margin-left: -8px;
+    }
+
+    *, *:before, *:after {box-sizing:  border-box !important;}
+
+    .panel {
+        display: inline-block;
+        margin:  .5em;
+        padding:  0;
+        width:98%;
+    }
+
+
+
+    .ticket-view .panel-default{
+        border: none;
+    }
+
+    .ticket-view .panel-body{
+        padding: 0px;
+    }
+    .ticket-view .list-group{
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+
+    .row {
+        -moz-column-width: 33em;
+        -webkit-column-width: 33em;
+        -moz-column-gap: .5em;
+        -webkit-column-gap: .5em;
+
+    }
+
+
+    .panel-heading.panel-heading-chisel{
+        background-color: red;
+    }
+
+
+    .list-item-link{
+        margin-top: -5px;
+        /*18, 20*/
+    }
+    .ticket-view{
+        background-color: #ecf0f1;
+    }
+    .ticket-view-section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .ticket-section-header{
+        background-color: #ecf0f1;
+        color:#95a5a6;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        /*border-top: solid 1px #e2e2e2;*/
+        /*border-left: solid 1px #e2e2e2;*/
+        /*border-right: solid 1px #e2e2e2;*/
+        /*border-top-left-radius: 2px;*/
+        /*border-top-right-radius: 2px;*/
+
+    }
+    .list-item-label{
+        font-weight: normal;
+    }
+    .list-group-item.custom-width{
+        height: auto;
+    }
+
+</style>
+
+<!--<div class="container-fluid hidden-lg hidden-md">-->
+    <!--<div class="row">-->
+        <!--&lt;!&ndash;<div class="col-sm-12">&ndash;&gt;-->
+        <!--&lt;!&ndash;<form role="form">&ndash;&gt;-->
+        <!--<div class="col-sm-12 form-group ">-->
+            <!--<label for="exampleInputEmail1">Email address</label>-->
+            <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">-->
+        <!--</div>-->
+        <!--<div class="col-sm-12 form-group">-->
+            <!--<label for="exampleInputPassword1">Password</label>-->
+            <!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+        <!--</div>-->
+
+        <!--<button type="submit" class="btn btn-default">Submit</button>-->
+        <!--&lt;!&ndash;</form>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="container-fluid hidden-sm">-->
+    <!--<div class="row">-->
+        <!--&lt;!&ndash;<div class="col-sm-12">&ndash;&gt;-->
+        <!--&lt;!&ndash;<form role="form">&ndash;&gt;-->
+        <!--<div class="col-sm-12 form-group ">-->
+            <!--<label for="exampleInputEmail1" class="">Email address ddd</label>-->
+            <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">-->
+        <!--</div>-->
+        <!--<div class="col-sm-12 form-group">-->
+            <!--<label for="exampleInputPassword1">Password</label>-->
+            <!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+        <!--</div>-->
+
+        <!--<button type="submit" class="btn btn-default">Submit</button>-->
+        <!--&lt;!&ndash;</form>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->

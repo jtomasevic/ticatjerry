@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" ng-app="chiselApp">
+<head>
+    <meta charset="utf-8">
+    <title>TiCat Jerry</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+
+
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-custom/bootstrap.vertical-tabs.min.css" rel="stylesheet">
+    <link href="css/ang-dt-pck.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/modalDialog.css" rel="stylesheet">
+    <link href="lib/angular/angular-csp.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://eonasdan.github.io/bootstrap-datetimepicker/content/bootstrap-datetimepicker.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+
+    <style type="text/css">
+        <!--
+
+        @media print
+        {
+            .noprint {display:none;}
+        }
+
+        @media screen
+        {
+            .noscreen {display: none;}
+        }
+
+        -->
+    </style>
+
+
+
+
+</head>
+<body>
+
+<ng-view>
+
+</ng-view>
+<script src="lib/angular/angular.js"></script>
+
+<script src ="lib/angular/angular-resource.min.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="lib/angular/angular-animate.min.js"></script>
+<script src="lib/angular/angular-cookies.min.js"></script>
+
+<script src="lib/jQuery.js"></script>
+
+
+
+
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/ang-dt-pck.js"></script>
+
+<script src="lib/moment.js"></script>
+
+<script src="lib/bootstrap-select.js"></script>
+
+
+
+<script src="js/app.js"></script>
+
+<!--test data-->
+<script src="testdata/requests.js"></script>
+
+<!--------------------------------------------------------------------->
+<!--CONTROLLERS-->
+<script src="js/controllers/HomeController.js"></script>
+<script src="js/controllers/MainController.js"></script>
+<script src="js/controllers/ticket/TicketController.js"></script>
+<script src="js/controllers/PrinterController.js"></script>
+
+<!--------------------------------------------------------------------->
+<!--SERVICES-->
+<script src="js/services/data/Common.js"></script>
+<script src="js/services/data/DataService.js"></script>
+<script src="js/services/data/UserDataService.js"></script>
+<script src="js/services/data/TicketDataServices.js"></script>
+<script src="js/services/data/SearchDataService.js"></script>
+
+
+<!--------------------------------------------------------------------->
+<!--UI DIRECTIVES -->
+<!--signin, signup-->
+<script src="js/directives/user/signin.js"></script>
+<script src="js/directives/user/signup.js"></script>
+<!--navbars-->
+<script src="js/directives/main/navBar.js"></script>
+<script src="js/directives/main/navBarPrinter.js"></script>
+<!--ticket collection views-->
+<script src="js/directives/ticket/collections/filterView.js"></script>
+<script src="js/directives/ticket/collections/tableView.js"></script>
+<script src="js/directives/ticket/collections/boardView.js"></script>
+<script src="js/directives/ticket/collections/boardViewMobile.js"></script>
+<script src="js/directives/ticket/ticketView/ticketViewNav.js"></script>
+<!--search ui filters-->
+<script src="js/directives/search/filters.js"></script>
+<script src="js/directives/search/agreement-filters.js"></script>
+<script src="js/directives/search/customer-filters.js"></script>
+<script src="js/directives/search/ticket-filters.js"></script>
+<script src="js/directives/search/machine-filters.js"></script>
+
+
+
+<script>
+
+//    var data = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]];
+//    var csvContent = "data:text/csv;charset=utf-8,";
+//    data.forEach(function(infoArray, index){
+//
+//        dataString = infoArray.join(",");
+//        csvContent += index < infoArray.length ? dataString+ "\n" : dataString;
+//
+//    });
+//    var encodedUri = encodeURI(csvContent);
+//    window.open(encodedUri);
+//    var encodedUri = encodeURI(csvContent);
+//    var link = document.createElement("a");
+//    link.setAttribute("href", encodedUri);
+//    link.setAttribute("download", "my_data.csv");
+//
+//    link.click();
+</script>
+
+<style>
+    body{
+        font-family:  Roboto, sans-serif;
+        font-size: 14px;
+    }
+</style>
+
+</body>
+</html>

@@ -1,0 +1,662 @@
+
+<style type="text/css">
+    <!--
+
+    @media print
+    {
+        .noprint {display:none;}
+    }
+
+    @media screen
+    {
+
+    }
+
+    -->
+</style>
+<!--col-xs-1 col-sm-1 col-md-2 col-lg-3-->
+<div class="container-fluid chisel " >
+    <div class="row" style="margin-top: 33px;">
+        <div class="col-sm-6 col-md-4 col-lg-4 menu-category"  ng-repeat="ticket in myTickets | filter:globalQuery | orderBy:orderField | filter:filterImportance | filter:filterStatus" id="ticket-{{ticket._id}}" ng-class="ticket.warning_flag">
+            <div class="block-header root" ng-class="ticket.warning_flag" >
+                <div class="noprint  block-header-headline root">
+                    <a data-toggle="collapse" data-parent="#ticket-{{ticket._id}}" href="#request-section-{{ticket._id}}" class="header-title" target="_top">
+                        {{ticket.request_no}} | {{caption(ticket)}}
+                    </a>
+                </div>
+
+                    <div class="noprint block-header-buttons pull-right ">
+                        <button  class="block-header-button" ng-click="editItem(ticket)" ng-class="block.class">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </button>
+                    </div>
+
+            </div>
+            <div id="request-section-{{ticket._id}}" class=" block-header-menu collapse" style="">
+                <div class="ticket-description" ng-show="{{ticket.description != null && ticket.description != ''}}">
+                    {{ticket.description}}
+                </div>
+                <ul class="toggle-menu list-group" >
+                    <li class="list-group-item" ng-show="{{ticket.status != null && ticket.status != ''}}">
+                        <label class="item-caption">Status</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.status}}</label>
+                    </li>
+
+
+                    <li class="list-group-item" ng-show="{{ticket.date_opened != null && ticket.date_opened != ''}}">
+                        <label class="item-caption">Opened</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.date_opened}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.date_dispatched != null && ticket.date_dispatched != ''}}">
+                        <label class="item-caption">Dispatched</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.date_dispatched}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.date_to_solve != null && ticket.date_to_solve != ''}}">
+                        <label class="item-caption">Date to solve</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.date_to_solve}}</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="block-header default">
+                <div class="block-header-headline">
+                    <a data-toggle="collapse" data-parent="#ticket-{{ticket._id}}" href="#customer-section-{{ticket._id}}" class="header-title" target="_top">
+                        {{ticket.customer.name}}
+                    </a>
+                </div>
+
+            </div>
+            <div id="customer-section-{{ticket._id}}" class=" block-header-menu collapse" >
+                <ul class="toggle-menu list-group">
+
+                    <li class="list-group-item" ng-show="{{ticket.customer.email != null && ticket.customer.email != ''}}">
+                        <label class="item-caption">Email</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.customer.email}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.customer.address != null && ticket.customer.address != ''}}">
+                        <label class="item-caption">Address</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.customer.address}}</label>
+
+                    </li>
+                    <li class="list-group-item contact-person" ng-show="{{ticket.customer.contact_person != null && ticket.customer.contact_person != ''}}">
+                        <ul class ="list-group contact-person-list">
+                            <li class="list-group-item " style="border-top: 0px; background-color: #ecf0f1; border-radius: 0px;">
+                                Contact person
+                            </li>
+                            <li class="list-group-item" ng-show="{{ticket.customer.contact_person.name != null && ticket.customer.contact_person.name != ''}}">
+                                <label class="item-caption">Name</label>
+                                <label class="list-item-label item-value pull-right">{{ticket.customer.contact_person.name}}</label>
+                            </li>
+                            <li class="list-group-item" ng-show="{{ticket.customer.contact_person.email != null && ticket.customer.contact_person.email != ''}}">
+                                <label class="item-caption">Email</label>
+                                <label class="list-item-label item-value pull-right">{{ticket.customer.contact_person.email}}</label>
+
+                            </li>
+                            <li class="list-group-item" ng-show="{{ticket.customer.contact_person.mobile != null && ticket.customer.contact_person.mobile != ''}}">
+                                <label class="item-caption">Mobile</label>
+                                <label class="list-item-label item-value pull-right">{{ticket.customer.contact_person.mobile}}</label>
+                            </li>
+                            <li class="list-group-item" ng-show="{{ticket.customer.contact_person.phone != null && ticket.customer.contact_person.phone != ''}}">
+                                <label class="item-caption">Phone</label>
+                                <label class="list-item-label item-value pull-right">{{ticket.customer.contact_person.phone}}</label>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="block-header default">
+                <div class="block-header-headline">
+                    <a data-toggle="collapse" data-parent="#ticket-{{ticket._id}}" href="#agreement-section-{{ticket._id}}" class="header-title" target="_top" ng-show="ticket.agreement!=null">
+                        Agreement: {{ticket.agreement.number}}
+                    </a>
+                    <a class="header-title" ng-show="ticket.agreement==null">
+                        NO AGREEMENT
+                    </a>
+                </div>
+            </div>
+            <div id="agreement-section-{{ticket._id}}" class=" block-header-menu collapse" >
+                <ul class="toggle-menu list-group">
+                    <li class="list-group-item" ng-show="{{ticket.agreement.date_start != null && ticket.agreement.date_start != ''}}">
+                        <label class="item-caption">Start</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.agreement.date_start}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.agreement.date_expire != null && ticket.agreement.date_expire != ''}}">
+                        <label class="item-caption">Expired</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.agreement.date_expire}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.agreement.description != null && ticket.agreement.description != ''}}">
+                        <label class="item-caption">Description</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.agreement.description}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.agreement.response_target_seconds != null && ticket.agreement.response_target_seconds != ''}}">
+                        <label class="item-caption">Response</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.agreement.response_target_seconds}}</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="block-header default" >
+                <div class="block-header-headline">
+                    <a data-toggle="collapse" data-parent="#ticket-{{ticket._id}}" href="#machine-section-{{ticket._id}}" class="header-title" target="_top">
+                        {{ticket.product.name}} | {{ticket.product.serial_number}} | {{ticket.product.asset_number}}
+                    </a>
+                </div>
+            </div>
+            <div id="machine-section-{{ticket._id}}" class=" block-header-menu collapse" >
+                <ul class="toggle-menu list-group">
+                    <li class="list-group-item" ng-show="{{ticket.product.name != null && ticket.product.name != ''}}">
+                        <label class="item-caption">Name</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.product.name}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.product.serial_number != null && ticket.product.serial_number != ''}}">
+                        <label class="item-caption">Serial No.</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.product.serial_number }}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.product.asset_number != null && ticket.product.asset_number != ''}}">
+                        <label class="item-caption">Asset No.</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.product.asset_number}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.product.location != null && ticket.product.location != ''}}">
+                        <label class="item-caption">Location</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.product.location}}</label>
+                    </li>
+                    <li class="list-group-item" ng-show="{{ticket.product.precise_location != null && ticket.product.precise_location != ''}}">
+                        <label class="item-caption">Precise location</label>
+                        <label class="list-item-label item-value pull-right">{{ticket.product.precise_location}}</label>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<style>
+     .ticket-block{
+     }
+     .menu-category > .block-header-menu{
+        position: absolute; z-index: 100; width: 100%
+    }
+
+
+    .list-group.contact-person-list{
+        margin-bottom: 0px;
+    }
+    .list-group.contact-person-list > li{
+        border-left: none;
+        border-right: none;
+    }
+    .list-group-item.contact-person{
+        padding: 0px;;
+    }
+    .ticket-description{
+        padding: 10px;
+    }
+    .toggle-menu.list-group{
+        border-radius: 0px;
+        background-color: #ffffff;
+    }
+    .menu-category{
+        /*margin-top: -5px;*/
+        border-left: 1px solid #bdc3c7;
+
+    }
+    .block-header.root{
+        background-color: #34495e;
+        color:#ecf0f1;
+    }
+
+    body{
+        /*background-color: #bdc3c7;*/
+    }
+    .container-fluid.chisel {
+
+    }
+    .default, .menu-category.default{
+        background-color: #ecf0f1;
+    }
+
+    .default > .block-header-headline{
+        /*height: 100px;*/
+    }
+    .default > .block-header-headline > .header-title{
+        color: #2c3e50;
+    }
+    .default > .block-header-headline.root > .header-title{
+        color: #ecf0f1;
+    }
+
+    .block-header.warning{
+        background-color: #e67e22;
+    }
+    .block-header.danger{
+        background-color: #c0392b;
+    }
+
+    /* ****************************************************************************************************************
+    /* BLOCK HEADER ***************************************************************************************************
+    *******************************************************************************************************************/
+
+    /* *******************************************
+    * HEADER & HEADLINE *************************/
+
+    /* header div */
+    .block-header{
+        margin-top: 0px;
+        /*background-color: #2c3e50;*/
+        min-height: 40px;
+        max-height: 80px;
+        height: auto;
+    }
+        /*  */
+    .block-header-headline{
+        padding-top: 10px;
+        float: left;
+        min-height: 40px;
+        max-height: 80px;
+        padding-left: 10px;
+    }
+
+    .block-header-buttons{
+        /*clear:both;*/
+    }
+
+
+        /* Block header title caption link */
+    .header-title{
+        color: #ffffff;
+        /*padding-left: 10px;*/
+        margin-top: 10px;
+    }
+    .header-title:hover{
+        color: #ecf0f1;
+    }
+        /* ********************************************
+        * HEADER BUTTONS ******************************/
+
+    .block-header-button{
+        color:#ecf0f1;
+        border:none;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: transparent;
+    }
+    .block-header-button:hover{
+        background-color:#d35400;
+    }
+    .block-header-button.on{
+        background-color: #c0392b;
+    }
+
+        /**********************************************
+        /* Block header collapsable menu *************/
+    .block-header-menu{
+        /*margin-top: 100px;*/
+        background-color: #ffffff;
+    }
+        /* Toggle header menu */
+    .toggle-menu{
+        padding-left: 0px;
+        margin-bottom: 0px;
+        background-color: #34495e;
+    }
+    .toggle-menu li{
+        list-style: none;
+        padding:10px;
+
+    }
+    .toggle-menu li:hover{
+        /*background-color: #d35400;*/
+    }
+        /* Link in header toggle menu */
+    .block-header-menu-link{
+        color:#ecf0f1;
+    }
+    .block-header-menu-link:hover{
+        color:#ecf0f1;
+    }
+
+
+
+
+
+    .block-plot{
+        margin-left: 5px;
+        /*font-weight: 500;*/
+    }
+    .block-body{
+        margin-left: 5px;
+    }
+
+
+
+        /* ****************************************************************************************************************
+       /* BAR BUTTONS ***************************************************************************************************
+       *******************************************************************************************************************/
+    .block-bar{
+        position: absolute;
+        left: 1px;
+        top:42px;
+        z-index: 1000;
+        background-color: #2c3e50;
+        width: 100%;
+        /*background-color: #ecf0f1;;*/
+        /*overflow: auto;*/
+    }
+    .block-bar-button{
+        border:none;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        /*background-color: #ecf0f1;*/
+        /*colo:#34495e;*/
+        background-color: #2c3e50;
+        color:#ecf0f1;
+    }
+
+        /* COMMENNT TEXT BOX */
+    .block-comment{
+        min-width: 75%;
+        max-width: 80%;
+    }
+
+        /*.block-bar-button.like{*/
+        /*color: #c0392b;*/
+        /*}*/
+        /*.block-bar-button.comment{*/
+        /*color: #c0392b;*/
+        /*}*/
+
+    .block-bar-button:hover{
+        background-color:#d35400;
+    }
+    .block-bar-button.on{
+        background-color: #c0392b;
+    }
+
+
+
+
+
+    /**, *:before, *:after {box-sizing:  border-box !important;}*/
+
+
+    .row {
+        /*-moz-column-width: 28em;*/
+        /*-webkit-column-width: 28em;*/
+        /*-moz-column-gap: 0.0em;*/
+        /*-webkit-column-gap: 0.0em;*/
+
+    }
+
+    .menu-category {
+        display: inline-block;
+        margin:  0.0rem;
+        padding:  0.0em;
+        /*padding: 1px;*/
+        /*width:  100%;*/
+        /*position: relative;*/
+    }
+
+
+
+</style>
+<!--<div class="container">-->
+<!--<div class="row ticket-board">-->
+    <!--<div class=" col-xs-12 panel-group" id="m_ticketAccordion{{ticket._id}}" ng-repeat="ticket in myTickets">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                    <!--<a data-toggle="collapse" data-parent="#m_ticketAccordion{{ticket._id}}" href="#m_ticketMoreInfo{{ticket._id}}" target="_top">-->
+                        <!--<span class="label label-{{ticket.warning_flag}}" style="font-size: 13px; font-weight: normal; ">-->
+                                <!--{{ticket.request_no}}-->
+                        <!--</span>-->
+                    <!--</a>&nbsp; &nbsp;-->
+                    <!--<span class="label label-{{ticket.status}} status-label" style="font-size: 13px; font-weight: normal; ">-->
+                                <!--{{ticket.status}}-->
+                        <!--</span>-->
+                    <!--<a class="btn btn-info btn-xs pull-right" href="#/ticket/view/{{ticket._id}}">-->
+                        <!--<i class="fa fa-eye fa-fw "> </i>&nbsp; view-->
+                    <!--</a>-->
+            <!--</div>-->
+            <!--<div id="m_ticketMoreInfo{{ticket._id}}" class="panel-collapse collapse ">-->
+                <!--<div class="panel-body">-->
+                    <!--<ul class="list-group">-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Request no</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.request_no}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Status</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.status}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item" style="max-height: 200px; height: 100px;">-->
+                            <!--<label>Description</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.description}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Comment</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.comment}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Opened</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.date_opened}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Dispatched</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.date_allocated}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Latest time</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.date_dispatched}}</label>-->
+                        <!--</li>-->
+
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Deadline</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.date_to_solve}}</label>-->
+                        <!--</li>-->
+
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                    <!--<a data-toggle="collapse" data-parent="#m_ticketAccordion{{ticket._id}}" href="#m_customerMoreInfo{{ticket._id}}" target="_top">-->
+                        <!--{{ticket.customer.name}}-->
+                    <!--</a>-->
+            <!--</div>-->
+            <!--<div id="m_customerMoreInfo{{ticket._id}}" class="panel-collapse collapse">-->
+                <!--<div class="panel-body">-->
+
+                    <!--<ul class="list-group">-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Full name </label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.customer.name}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Address</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.customer.address}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Email</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.customer.email}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item" style="background-color: #ecf0f1; color: #95a5a6; font-weight: normal;">-->
+                            <!--<label style="font-weight: normal;">CONTACT: {{ticket.customer.contact_person.name}}</label >-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Email</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.customer.contact_person.email}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Phone</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.customer.contact_person.phone}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Mobile</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.customer.mobile}}</label>-->
+                        <!--</li>-->
+
+                    <!--</ul>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="panel panel-default">-->
+        <!--<div class="panel-heading">-->
+            <!--<a data-toggle="collapse" data-parent="#m_ticketAccordion{{ticket._id}}" href="#m_agreementMoreInfo{{ticket._id}}" target="_top">-->
+                <!--Agreement: {{ticket.agreement.number}}-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div id="m_agreementMoreInfo{{ticket._id}}" class="panel-collapse collapse">-->
+            <!--<div class="panel-body">-->
+
+                <!--<ul class="list-group">-->
+                    <!--<li class="list-group-item">-->
+                        <!--<label>Expiration</label>-->
+                        <!--<label class="list-item-label pull-right">{{ticket.agreement.date_expire}}</label>-->
+                    <!--</li>-->
+                    <!--<li class="list-group-item">-->
+                        <!--<label>Response target</label>-->
+                        <!--<label class="list-item-label pull-right">{{ticket.agreement.response_target_seconds}}</label>-->
+                    <!--</li>-->
+                    <!--<li class="list-group-item">-->
+                        <!--<label>Type</label>-->
+                        <!--<label class="list-item-label pull-right">{{ticket.agreement.description}}</label>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                    <!--<a data-toggle="collapse" data-parent="#m_ticketAccordion{{ticket._id}}" href="#m_machineMoreInfo{{ticket._id}}" target="_top">-->
+                        <!--Machine: {{ticket.product.name}}-->
+                    <!--</a>-->
+            <!--</div>-->
+            <!--<div id="m_machineMoreInfo{{ticket._id}}" class="panel-collapse collapse">-->
+                <!--<div class="panel-body">-->
+
+                    <!--<ul class="list-group">-->
+
+                        <!--<li class="list-group-item">-->
+                            <!--<label>ID number</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.product.serial_number}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Asset number</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.product.asset_number}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Location</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.product.location}}</label>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                <!--<a data-toggle="collapse" data-parent="#m_ticketAccordion{{ticket._id}}" href="#m_solutionMoreInfo{{ticket._id}}" target="_top">-->
+                   <!--Solution-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<div id="m_solutionMoreInfo{{ticket._id}}" class="panel-collapse collapse">-->
+                <!--<div class="panel-body">-->
+
+                    <!--<ul class="list-group">-->
+
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Employee</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.solution.employee}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Arrival</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.date_arrived}}</label>-->
+                        <!--</li>-->
+
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Finished</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.date_finished}}</label>-->
+                        <!--</li>-->
+
+                        <!--<li class="list-group-item">-->
+                            <!--<label>B/W counter</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.solution.bw_counter}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Color counter</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.solution.color_counter}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>A3</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.solution.a3_counter}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Total</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.solution.total_counter}}</label>-->
+                        <!--</li>-->
+                        <!--<li class="list-group-item">-->
+                            <!--<label>Comment</label>-->
+                            <!--<label class="list-item-label pull-right">{{ticket.solution.comment}}</label>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--<style>-->
+    <!--.ticket-board .label.label-Dispatched{-->
+        <!--background-color: #3498db;-->
+    <!--}-->
+
+
+    <!--.label.label-Opened{-->
+        <!--background-color:   #95a5a6;-->
+    <!--}-->
+
+
+    <!--.label.label-Allocated.status-label{-->
+        <!--background-color: #2ecc71;-->
+
+    <!--}-->
+    <!--.ticket-board .panel-group{-->
+        <!--border: solid 3px #ecf0f1;-->
+        <!--background-color: #F5F5F3;-->
+    <!--}-->
+    <!--.ticket-board .panel.panel-default{-->
+        <!--border: none;-->
+
+    <!--}-->
+
+    <!--.ticket-board .panel-body{-->
+        <!--padding: 0px;-->
+    <!--}-->
+    <!--.ticket-board .list-group{-->
+        <!--margin-bottom: 0px;-->
+        <!--padding: 0px;-->
+    <!--}-->
+
+    <!--body{-->
+        <!--/*background-color:#F5F5F3;   */-->
+    <!--}-->
+<!--</style>-->

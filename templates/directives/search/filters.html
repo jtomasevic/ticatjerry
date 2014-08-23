@@ -1,0 +1,37 @@
+<div  class="container-fluid sub-sets noprint">
+    <div class="row sets">
+        <div  class="col-xs-12 col-sm-12 col-md-12 col-lg-6 sub-sets-header" ng-show="searchCriteria.searchFor!=null">
+            <div class="sub-sets-header-title" >
+                <span class="sub-sets-header-title-text">Subset filters</span>
+
+                <a href="" ng-model="editSets" ng-init="editSets=false" class="include-set-chbox pull-right">
+                    {{s.title}}
+                    <i class="fa fa-check-square-o lg pull-right" ng-show="!editSets" ng-click="editSets = !editSets"></i>
+                    <i class="fa fa-edit lg pull-right" ng-show="editSets" ng-click="editSets = !editSets"></i>
+                </a>
+
+            </div>
+            <div ng-repeat="si in setsToInclude()" class="sub-set-item" ng-show="!editSets">
+                <div  ng-show="searchCriteria.searchFor!=null" >
+                    <input type="text" class="form-control set-filter" ng-model="si.filter" ng-disabled="!si.include">
+                    <div class="set-filter-title">
+                        <a href=""  >
+                            {{si.title}}
+                        </a>
+                    </div>
+
+                </div>
+                <div class="sub-set-on-off pull-right">
+                    <a href="" ng-click="toggleSetIncluded(si)" class="sub-set-on-off ">
+                        <i class="fa fa-check lg " ng-show="si.include"></i>
+                        <i class="fa fa-square-o choff lg" ng-show="!si.include"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <ticket-filters ng-show="currentFilter == 'ticket-filters'" >
+
+        </ticket-filters>
+    </div>
+
+</div>

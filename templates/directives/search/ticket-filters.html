@@ -1,0 +1,54 @@
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 sub-sets-header" ng-show="searchCriteria.searchFor!=null" ng-repeat="f in searchCriteria.searchFor.filters">
+    <div class="sub-sets-header-title">
+        <span class="sub-sets-header-title-text">{{f.title}}</span>
+        <a href="" ng-model="editSets" ng-init="editSets=false" class="include-set-chbox pull-right">
+            <i class="fa fa-check-square-o lg pull-right" ng-show="!editSets" ng-click="editSets = !editSets"></i>
+            <i class="fa fa-edit lg pull-right" ng-show="editSets" ng-click="editSets = !editSets"></i>
+        </a>
+    </div>
+    <div ng-repeat="fItem in f.items" class="sub-set-item" ng-show="!editSets">
+        <div class="">
+            <div class="set-filter-title">
+                <a href="" ng-click="toggleFilterItem(fItem)" ng-model="fItem.title">
+                    {{fItem.title}}
+                </a>
+            </div>
+            <div class="sub-set-on-off pull-right">
+                <a href="" ng-click="fItem.include_dates = ! fItem.include_dates" class="sub-set-on-off">
+                    <i class="fa fa-calendar lg " ng-show="fItem.dates!=null && fItem.include"></i>
+                </a>
+                <a href="" ng-click="toggleFilterItem(fItem)" class="sub-set-on-off ">
+                    <i class="fa fa-check lg " ng-show="fItem.include"></i>
+                    <i class="fa fa-square-o choff lg" ng-show="!fItem.include"></i>
+                </a>
+            </div>
+            <div class="sub-set-item" ng-show="fItem.dates!=null && fItem.include && fItem.include_dates">
+                <div class="set-filter-title">
+                    <a href=""  role="button" data-toggle="dropdown" data-target="#" href="#" target="_self">
+                        From: &nbsp;&nbsp;{{ fItem.dates.from | date:'yyyy-MM-dd' }}
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="fItem.dates.from" data-datetimepicker-config="{ dropdownSelector: '#dateFrom', minView:'day' }"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="sub-set-item" ng-show="fItem.dates!=null && fItem.include && fItem.include_dates">
+                <div class="set-filter-title">
+                    <a class="" id="dateTo" role="button" data-toggle="dropdown" data-target="#" href="#" target="_self" style="padding-left: 15px;">
+                        To: &nbsp;&nbsp; {{ fItem.dates.to | date:'yyyy-MM-dd' }}
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="fItem.dates.to" data-datetimepicker-config="{ dropdownSelector: '#dateTo', minView:'day' }"/>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #dateFrom, #dateTo{
+        padding-left: 35px;
+    }
+
+</style>

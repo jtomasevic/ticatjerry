@@ -1,0 +1,450 @@
+
+    <div class="navbar-fixed-top ticat-nav" id="ticat-navigation">
+        <div class="logo">
+            TiCat
+        </div>
+
+        <div class="links">
+            <a id="search-btn" ng-click="toggleSearch()" class="nav-link" href="#searchPanel" data-parent="#ticat-navigation" data-toggle="collapse" target="_top"><i  class="fa fa-search fa-lg "></i></a>
+
+
+            <a class="nav-link right" href="#searchPanel1" data-parent="#ticat-navigation" data-toggle="collapse" target="_top"><i class="fa fa-cog fa-lg t"></i></a>
+            <a class="nav-link right" ng-click="print()"><i class="fa fa-print fa-lg t"></i></a>
+
+        </div>
+    </div>
+
+<div class="sub-menus">
+    <div class="ticat-collapsable-menu collapse " id="columnFilter">
+        <div class="checkbox" style="padding-top: 8px;">
+            <label>
+                <input type="checkbox" value="" checked>
+                Status
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" checked>
+                Customer
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" checked>
+                Machine
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" checked>
+                Agreement
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" checked>
+                Deadline
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" checked>
+                Employee
+            </label>
+        </div>
+    </div>
+</div>
+<div class=" search-panel" >
+
+    <div class=" ticat-collapsable-menu collapse " style="" id="searchPanel">
+        <div class="row form-group1 ">
+            <div class="col-xs-12 col-sm-3 col-lg-3 col-xl-3 search-field">
+                <input type="text " class="txt form-control " placeholder="Filter anything" ng-model="globalQuery" ng-init="orderField">
+            </div>
+            <div class="col-xs-12 col-sm-3 col-lg-3 col-xl-3">
+                <label class="filter-label">Filter by status</label>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-click="showOpened = !showOpened" value="" checked>
+                        Opened
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-click="showAllocated = !showAllocated" value="" checked>
+                        Allocated
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-click="showDispatched = !showDispatched" value="" checked>
+                        Dispatched
+                    </label>
+                </div>
+            </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3 col-xl-3">
+                    <label class="filter-label">Filter by importance</label>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-click ="showHot = !showHot" value="" checked>
+                            Hot
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-click ="showWarm = !showWarm" value="" checked>
+                            Warm
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-click ="showRegular = !showRegular" value="" checked>
+                            Regular
+                        </label>
+                    </div>
+
+                </div>
+            <div class="col-xs-12 col-sm-3 col-lg-3 col-xl-3" >
+                <label class="filter-label">Sort by</label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" ng-click="orderField = 'date_to_solve'; captionType = 1;" checked >
+                        Date to solve
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" ng-click="orderField = 'customer_name'; captionType = 2;">
+                        Customer
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" ng-click="orderField = 'engineer_name'; captionType = 3;">
+                        Engineer
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+
+    .filter-label{
+        font-weight: normal;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #f39c12;
+        padding-top: 8px;
+    }
+    .search-field{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 0px;
+    }
+    .row.form-group1{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .ticat-nav{
+        height: 40px;
+        background-color: #2c3e50;
+        border-bottom: 1px solid #95a5a6;
+    }
+    .logo{
+        float: left;
+        color: #ecf0f1;
+        font-size: large;
+        padding-left: 13px;
+        padding-top: 8px;
+        padding-right: 5px;
+    }
+    .links{
+        /*clear: both;*/
+        color: #ecf0f1;
+    }
+    .nav-link {
+        color: #ecf0f1;
+        font-size: large;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 8px;
+        padding-bottom: 9px;
+    }
+    .nav-link i{
+        padding-top: 12px;
+    }
+    .nav-link:hover{
+        background-color: #e74c3c;
+        color: #ecf0f1;
+    }
+    .sub-menus{
+        background-color: #2c3e50;
+        color: #ffffff;
+        padding-top: 12px;
+        padding-bottom: 8px;
+        margin-top: -12px;
+    }
+    .search-panel{
+        background-color: #2c3e50;
+        color: #ffffff;
+        /*padding-top: 12px;*/
+        /*padding-bottom: 5px;*/
+        /*margin-top: -18px;*/
+        position: fixed;
+        z-index: 100;
+        top:40px;
+        width: 100%;
+
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    #searchPanel > .form-group1 > input{
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+
+    .ticat-collapsable-menu{
+        padding-left: 13px;
+        border-bottom: 1px solid #95a5a6;
+        width: 100%;
+        /*padding-bottom: 12px;*/
+    }
+    .nav-link.right{
+        float: right;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        cursor: pointer;
+    }
+    .form-group1{
+        padding-left: 0px;
+    }
+</style>
+
+
+
+<!--<div  class=" container-fluid navigation ticket-nav">-->
+<!--<nav class="navbar navbar-fixed-top navbar-ticat" role="navigation">-->
+    <!--<div class="container-fluid">-->
+        <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle ticat-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                <!--<i class="fa fa-search fa-lg"></i></a>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" href="">TiCat</a>-->
+            <!--<a href="" class="navbar-brand small dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg "></i></a>-->
+            <!--&lt;!&ndash;<a class="navbar-brand" href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg "></i></a>&ndash;&gt;-->
+                <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="">Users</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="">User groups</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="">Customers</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="">Machines</a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<a class="navbar-brand"" href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg "></i></a>&ndash;&gt;-->
+            <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
+                <!--&lt;!&ndash;<li><a href="#">Account</a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li><a href="#">Logout</a></li>&ndash;&gt;-->
+            <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+
+
+                <!--&lt;!&ndash;<ul class="nav navbar-nav navbar">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li class="dropdown">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg "></i></a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="">Users</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="">User groups</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="">Customers</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="">Machines</a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li class="dropdown">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg "></i></a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#">Account</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#">Logout</a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+
+        <!--</div>-->
+
+
+
+        <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+        <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+            <!--<form class="navbar-form navbar-left" role="search">-->
+                <!--<div class="form-group">-->
+                    <!--<div class="input-group" style="width: 300px;">-->
+                        <!--<input type="text" class="form-control" placeholder="Filter" ng-model="globalQuery">-->
+                        <!--<span class="input-group-addon nav-addon">-->
+                            <!--<a href="">-->
+                                <!--<i class="fa fa-search fa-lg"></i>-->
+                            <!--</a>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--</nav>-->
+
+<!--<style>-->
+        <!--/*Navbar basic*/-->
+    <!--.navbar.navbar-fixed-top.navbar-ticat{-->
+
+        <!--margin-bottom: 0px;-->
+    <!--}-->
+    <!--.navbar.navbar-ticat{-->
+        <!--background-color: #c0392b;-->
+    <!--}-->
+
+    <!--.navbar-toggle.ticat-toggle{-->
+        <!--color: #ecf0f1;-->
+    <!--}-->
+        <!--/*Drop downs in navigation*/-->
+    <!--.navbar.navbar-ticat .dropdown-toggle{-->
+
+    <!--}-->
+    <!--.navbar.navbar-ticat .dropdown-toggle:focus{-->
+        <!--background-color: #2c3e50;-->
+    <!--}-->
+        <!--/*Drop down menu items in navigation*/-->
+    <!--.navbar.navbar-ticat .dropdown-menu{-->
+        <!--background-color: #3498db;-->
+        <!--color:#ecf0f1;-->
+    <!--}-->
+    <!--.navbar.navbar-ticat .dropdown-menu li a:hover{-->
+        <!--background-color: #2980b9;-->
+        <!--color:#ecf0f1;-->
+    <!--}-->
+        <!--/*Links in navigation*/-->
+    <!--.navbar.navbar-ticat a{-->
+        <!--color: #ecf0f1;-->
+    <!--}-->
+    <!--.navbar.navbar-ticat a:hover{-->
+        <!--background-color: #2c3e50;-->
+    <!--}-->
+        <!--/*Addon on inputs in navigation*/-->
+    <!--.input-group-addon.nav-addon{-->
+        <!--background-color: transparent;-->
+        <!--border-color:#c0392b;-->
+    <!--}-->
+    <!--.input-group-addon.nav-addon:hover{-->
+        <!--background-color: #2c3e50;-->
+
+    <!--}-->
+
+    <!--.navbar-brand small{-->
+        <!--background-color: red;-->
+    <!--}-->
+
+<!--</style>-->
+
+<!--&lt;!&ndash;<div  class=" container-fluid navigation ticket-nav">&ndash;&gt;-->
+
+<!--<nav class="navbar navbar-fixed-top navbar-ticat" role="navigation">-->
+    <!--<div class="container-fluid">-->
+        <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle ticat-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                <!--<i class="fa fa-align-justify fa-lg"></i></a>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" href="">TiCat</a>-->
+
+            <!--<a class="navbar-brand" data-toggle="collapse" data-parent="#accordion" href="#filters" target="_top" style="font-size: 15px">-->
+                <!--Filters-->
+            <!--</a>-->
+
+        <!--</div>-->
+
+        <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+        <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+            <!--<form class="navbar-form navbar-left" role="search">-->
+                <!--<div class="form-group">-->
+                    <!--<div class="input-group" style="width: 300px;">-->
+                        <!--<input type="text" class="form-control" placeholder="Search" ng-model="statusQuery">-->
+                        <!--<span class="input-group-addon nav-addon">-->
+                            <!--<a href="">-->
+                                <!--<i class="fa fa-search fa-lg"></i>-->
+                            <!--</a>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
+
+
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg "></i></a>-->
+                    <!--<ul class="dropdown-menu" role="menu">-->
+                        <!--<li><a href="">Users</a></li>-->
+                        <!--<li><a href="">User groups</a></li>-->
+                        <!--<li><a href="">Customers</a></li>-->
+                        <!--<li><a href="">Machines</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg "></i></a>-->
+                    <!--<ul class="dropdown-menu" role="menu">-->
+                        <!--<li><a href="#">Account</a></li>-->
+                        <!--<li><a href="#">Logout</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--</nav>-->
+
+<!--<style>-->
+    <!--/*Navbar basic*/-->
+    <!--.navbar.navbar-fixed-top.navbar-ticat{-->
+
+        <!--margin-bottom: 0px;-->
+    <!--}-->
+    <!--.navbar.navbar-ticat{-->
+        <!--background-color: #34495e;-->
+    <!--}-->
+
+    <!--.navbar-toggle.ticat-toggle{-->
+        <!--color: #ecf0f1;-->
+    <!--}-->
+    <!--/*Drop downs in navigation*/-->
+    <!--.navbar.navbar-ticat .dropdown-toggle{-->
+
+    <!--}-->
+        <!--.navbar.navbar-ticat .dropdown-toggle:focus{-->
+            <!--background-color: #2c3e50;-->
+        <!--}-->
+    <!--/*Drop down menu items in navigation*/-->
+    <!--.navbar.navbar-ticat .dropdown-menu{-->
+        <!--background-color: #3498db;-->
+        <!--color:#ecf0f1;-->
+    <!--}-->
+        <!--.navbar.navbar-ticat .dropdown-menu li a:hover{-->
+            <!--background-color: #2980b9;-->
+            <!--color:#ecf0f1;-->
+        <!--}-->
+    <!--/*Links in navigation*/-->
+    <!--.navbar.navbar-ticat a{-->
+        <!--color: #ecf0f1;-->
+    <!--}-->
+        <!--.navbar.navbar-ticat a:hover{-->
+            <!--background-color: #2c3e50;-->
+        <!--}-->
+    <!--/*Addon on inputs in navigation*/-->
+    <!--.input-group-addon.nav-addon{-->
+        <!--background-color: transparent;-->
+        <!--border-color:#34495e;-->
+    <!--}-->
+        <!--.input-group-addon.nav-addon:hover{-->
+            <!--background-color: #2c3e50;-->
+
+        <!--}-->
+
+<!--</style>-->

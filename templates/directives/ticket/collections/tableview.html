@@ -1,0 +1,395 @@
+<div class="row ticket-table ">
+    <div class="col-sm-12 panel-group hidden-xs" id="ticketAccordion" >
+        <div class="panel panel-default">
+            <div class="row panel-heading table-header">
+                <div class="col-sm-12">
+                    <div class="row" >
+                        <div class="col-sm-1">
+                            Number
+                        </div>
+                        <div class="col-sm-1">
+                            Status
+                        </div>
+                        <div class="col-sm-4">
+                            Customer
+                        </div>
+                        <div class="col-sm-2">
+                            Machine
+                        </div>
+                        <div class="col-sm-1">
+                            Agreement
+                        </div>
+                        <div class="col-sm-1">
+                            Deadline
+                        </div>
+                        <div class="col-sm-1">
+                            Solution
+                        </div>
+                        <div class="col-sm-1">
+                            Action
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 panel-group" id="ticketAccordion{{ticket._id}}" ng-repeat="ticket in myTickets | filter:statusQuery ">
+        <div class="panel panel-default">
+
+            <div class="row panel-heading row-header">
+                <div class="col-sm-1">
+                    <b>
+                        <a data-toggle="collapse" data-parent="#ticketAccordion{{ticket._id}}" href="#ticketMoreInfo{{ticket._id}}" target="_top">
+                            <span class="label label-{{ticket.warning_flag}}" style="font-size: 13px; font-weight: normal; ">
+                                {{ticket.request_no}}
+                            </span>
+                        </a>
+                    </b>
+                </div>
+                <div class="col-sm-1">
+                    <b>
+
+                        <span class="label label-{{ticket.status}} status-label" style="font-size: 13px; font-weight: normal; ">
+                                {{ticket.status}}
+                        </span>
+                    </b>
+
+                </div>
+                <div class="col-sm-4">
+                    <a data-toggle="collapse" data-parent="#ticketAccordion{{ticket._id}}" href="#customerMoreInfo{{ticket._id}}" target="_top">
+                        {{ticket.customer.name}}, {{ticket.customer.contact_person.name}}
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a data-toggle="collapse" data-parent="#ticketAccordion{{ticket._id}}" href="#machineMoreInfo{{ticket._id}}" target="_top">
+                        <span> M:{{ticket.product.asset_number}}</span> <span> SN:{{ticket.product.serial_number}}</span>
+                    </a>
+                </div>
+                <div class="col-sm-1">
+                    <a data-toggle="collapse" data-parent="#ticketAccordion{{ticket._id}}" href="#agreementMoreInfo{{ticket._id}}" target="_top">
+                        {{ticket.agreement.number}}
+                    </a>
+                </div>
+                <div class="col-sm-1">
+                    <a data-toggle="collapse" data-parent="#ticketAccordion{{ticket._id}}" href="#datesMoreInfo{{ticket._id}}" target="_top">
+                        {{ticket.date_to_solve}}
+                    </a>
+                </div>
+                <div class="col-sm-1">
+                    <a data-toggle="collapse" data-parent="#ticketAccordion{{ticket._id}}" href="#solutionMoreInfo{{ticket._id}}" target="_top">
+                        Click for more
+                    </a>
+                </div>
+                <div class="col-sm-1"> <a type="button" class="btn btn-default" href="#/ticket/view/{{ticket._id}}" ng-click=""> <i class="fa fa-search-plus"></i></a></div>
+            </div>
+            <div id="ticketMoreInfo{{ticket._id}}" class="  panel-collapse collapse row-header">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label>Engineer </label>
+                            <label class="list-item-label pull-right">{{ticket.solution.engineer}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Status </label>
+                            <label class="list-item-label pull-right">{{ticket.status}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Response </label>
+                            <label class="list-item-label pull-right">{{ticket.response_time}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Call type </label>
+                            <label class="list-item-label pull-right">{{ticket.call_type}} </label>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div id="customerMoreInfo{{ticket._id}}" class="  panel-collapse collapse row-header">
+                <div class="panel-body">
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label>Contact person: </label>
+                            <label class="list-item-label pull-right">{{ticket.customer.contact_person.name}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Email: </label>
+                            <label class="list-item-label pull-right">{{ticket.customer.contact_person.email}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Phone: </label>
+                            <label class="list-item-label pull-right"> {{ticket.customer.contact_person.phone}}  </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Mob: </label>
+                            <label class="list-item-label pull-right"> {{ticket.customer.contact_person.mobile}}  </label>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div id="machineMoreInfo{{ticket._id}}" class="  panel-collapse collapse row-header">
+                <div class="panel-body">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <label>Model </label>
+                            <label class="list-item-label pull-right">{{ticket.product.asset_number}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Serial number </label>
+                            <label class="list-item-label pull-right">{{ticket.product.serial_number}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Address </label>
+                            <label class="list-item-label pull-right">{{ticket.product.location}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Precise location</label>
+                            <label class="list-item-label pull-right">{{ticket.product.precise_location}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Instalation date </label>
+                            <label class="list-item-label pull-right">{{ticket.product.instalation_date}} </label>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <div id="agreementMoreInfo{{ticket._id}}" class=" panel-collapse collapse row-header">
+                <div class="panel-body">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <label>Number </label>
+                            <label class="list-item-label pull-right">{{ticket.agreement.number}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Agreement type</label>
+                            <label class="list-item-label pull-right">{{ticket.agreement.agreement_type}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Expiration date</label>
+                            <label class="list-item-label pull-right">{{ticket.agreement.date_expire}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Response target</label>
+                            <label class="list-item-label pull-right">{{ticket.agreement.response_target_seconds}} </label>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div id="datesMoreInfo{{ticket._id}}" class=" panel-collapse collapse row-header">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label>Opened </label>
+                            <label class="list-item-label pull-right">{{ticket.date_opened}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Allocated</label>
+                            <label class="list-item-label pull-right">{{ticket.date_allocated}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Dispatched</label>
+                            <label class="list-item-label pull-right">{{ticket.date_dispatched}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Arrived</label>
+                            <label class="list-item-label pull-right">{{ticket.date_arrived}} </label>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <div id="solutionMoreInfo{{ticket._id}}" class=" panel-collapse collapse row-header">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label>Employee </label>
+                            <label class="list-item-label pull-right">{{ticket.solution.employee}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>BW counter</label>
+                            <label class="list-item-label pull-right">{{ticket.solution.bw_counter}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Color counter</label>
+                            <label class="list-item-label pull-right">{{ticket.solution.color_counter}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Total counter</label>
+                            <label class="list-item-label pull-right">{{ticket.solution.total_counter}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>A3 counter</label>
+                            <label class="list-item-label pull-right">{{ticket.solution.a3_counter}} </label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Comment</label>
+                            <label class="list-item-label pull-right">{{ticket.solution.comment}} </label>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .ticket-table .label.label-default{
+        background-color: transparent;
+        color: #000000;
+    }
+    .ticket-table .row.panel-heading.table-header{
+        background-color: #2980b9;
+        color: #ecf0f1;
+    }
+    /*ROW*/
+    .row.panel-heading.row-header{
+        background-color: #ecf0f1;
+        border-top: 1px solid #bdc3c7;
+
+    }
+    .row.panel-heading.row-header a{
+        color:#34495e;
+        /*border-top: 1px solid #000000;*/
+    }
+
+
+    .ticket-table .label.label-Dispatched{
+        background-color: #3498db;
+    }
+
+    .label.label-Opened{
+        background-color:   #95a5a6;
+    }
+
+
+    .label.label-Allocated.status-label{
+        background-color: #2ecc71;
+
+    }
+
+    .ticket-table .panel-default{
+        border: none;
+    }
+
+    .ticket-table .panel-body{
+        padding: 0px;
+    }
+    .ticket-table .list-group{
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+
+    /*.ticket-table .col-xs-12.col-sm-12.col-sm-6.col-lg-4.panel-collapse.collapse{*/
+        /*padding-left: 0px;*/
+        /*padding-right: 0px;*/
+        /*background-color: red;*/
+    /*}*/
+
+    .panel-heading.table-header{
+        background-color: #bdc3c7;
+    }
+    .ticket-table .panel-group{
+        margin: 0px;;
+    }
+
+</style>
+
+<!--<div class="container-fluid hidden-md hidden-sm hidden-xs" >-->
+
+    <!--<table class="table ">-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--Request no-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Call type-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Customer-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Model-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Serial no-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Address-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--City-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Engineer-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--created-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Allocated-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Dispatched-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--Response-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody class="table-hover">-->
+        <!--<tr ng-repeat="ticket in myTickets" class="{{ticket.style.color}}">-->
+            <!--<td>-->
+                <!--{{ticket.request_no}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.call_type}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.customer.name}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.machine_model}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.serial_number}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.machine_address}}-->
+            <!--</td>-->
+
+            <!--<td>-->
+                <!--{{ticket.machine_city}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.status}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.engineer}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.date_created}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.date_allocated}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.date_dispatched}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{ticket.response}}-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+<!--</div>-->

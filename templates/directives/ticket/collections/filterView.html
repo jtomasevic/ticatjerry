@@ -1,0 +1,139 @@
+<div class="container-fluid panel-group queue-filter" id="accordion" >
+    <!--<div class="row">-->
+        <!--<div class="col-12">-->
+            <!--<div class="panel panel-default">-->
+                <!--<div class="panel-heading filter-heading">-->
+                    <!--<h2 class="panel-title">-->
+                        <!--<a data-toggle="collapse" data-parent="#accordion" href="#filters" target="_top">-->
+                            <!--Queue Filters-->
+                        <!--</a>-->
+                    <!--</h2>-->
+                <!--</div>-->
+
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="row collapse filters" id="filters" >
+        <div class="col-xs-4 col-md-2" ng-model="statusQuery">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="Open" checked>
+                    New
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="Allocated" checked>
+                    Allocated
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="Dispatched" checked>
+                    Dispatched
+                </label>
+            </div>
+            <div class="checkbox">
+                <label class="">
+                    <input type="checkbox" value="" checked>
+                    RF
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="" checked>
+                    <span class="label label-warning">WARNING</span>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="" checked>
+                    <span class="label label-danger">LATE</span>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="" >
+                    <span class="label label-success">SOLVED</span>
+                </label>
+            </div>
+        </div>
+        <div class="col-xs-8 col-md-3">
+            <div class="form-group">
+                <div class="input-group" >
+                    <input type="text" class="form-control" placeholder="Customer (name, email, phone...)">
+                        <span class="input-group-addon filter-addon">
+                            <a href="">
+                                <span class="caret"></span>
+                            </a>
+                        </span>
+                    </input>
+                </div>
+                <div class="input-group" >
+                    <input type="text" class="form-control" placeholder="Machine (model or serial number)">
+                        <span class="input-group-addon filter-addon">
+                            <a href="">
+                                <span class="caret"></span>
+                            </a>
+                        </span>
+                    </input>
+                </div>
+                <div class="input-group" >
+                    <input type="text" class="form-control" placeholder="Agreement (number or type)">
+                        <span class="input-group-addon filter-addon">
+                            <a href="">
+                                <span class="caret"></span>
+                            </a>
+                        </span>
+                    </input>
+                </div>
+                <div class="input-group" >
+                    <input type="text" class="form-control" placeholder="Location">
+                        <span class="input-group-addon filter-addon">
+                            <a href="">
+                                <span class="caret"></span>
+                            </a>
+                        </span>
+                    </input>
+                </div>
+                <div class="input-group" >
+                    <input type="text" class="form-control" placeholder="Employee">
+                        <span class="input-group-addon filter-addon">
+                            <a href="">
+                                <span class="caret"></span>
+                            </a>
+                        </span>
+                    </input>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-sm hidden-xs">
+            <div class="panel-heading">
+                Detailed filters
+            </div>
+            <div class="panel-body">
+                Here goes more detailed filters visible only on desktops and most of tablets.
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .container-fluid.panel-group.queue-filter{
+        margin-bottom: 0px;
+        margin-top: 55px;
+    }
+
+    .panel-heading.filter-heading{
+        background-color: #ecf0f1;
+    }
+    .input-group-addon.filter-addon{
+        /*border: none;*/
+    }
+    .filters .input-group{
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+</style>
