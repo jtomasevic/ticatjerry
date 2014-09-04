@@ -72,7 +72,7 @@ chiselApp.controller('PrinterController',
 
         $scope.searchFor = [{
                 _id:"1",
-                title:"Tickets",
+                title: "ServiceRequests",
                 filters:[{
                     _id:"1",
                     title:"Status",
@@ -137,10 +137,10 @@ chiselApp.controller('PrinterController',
                 ]
             },{
                 _id:"2",
-                title:"Customers"
+                title: "Customers"
             },{
                 _id:"3",
-                title:"Agreements"
+                title: "Agreements"
             },{
                 _id:"4",
                 title:"Machines"
@@ -163,11 +163,6 @@ chiselApp.controller('PrinterController',
                 },{
                     _id:"1.3",
                     title:"Machine",
-                    include:false,
-                    filter:''
-                },{
-                    _id:"1.4",
-                    title:"Solution",
                     include:false,
                     filter:''
                 },{
@@ -239,7 +234,7 @@ chiselApp.controller('PrinterController',
                     filter:''
                 },{
                     _id:"4.3",
-                    title:"Tickets",
+                    title: "ServiceRequests",
                     include:false,
                     filter:''
                 }]
