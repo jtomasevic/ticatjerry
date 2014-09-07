@@ -53,6 +53,9 @@ chiselApp.controller('PrinterController',
         // search
         $scope.search = function(){
             searchDataService.search($scope.searchCriteria)
+                .then(function(data){
+                    console.log("search result", data);
+                });
             console.log($scope.searchCriteria)
         }
 
@@ -237,6 +240,33 @@ chiselApp.controller('PrinterController',
                     title: "ServiceRequests",
                     include:false,
                     filter:''
+                }]
+            }
+        ]
+        $scope.tableConfig = [
+            {
+                _id:"1",
+                name:"Service Request",
+                columns:[{
+                    _id:"1.1",
+                    name:"ServiceRequestNumber",
+                    include:true
+                },{
+                    _id:"1.2",
+                    name:"ServiceRequestState",
+                    include:true
+                },{
+                    _id:"1.3",
+                    name:"SolutionComment",
+                    include:true
+                },{
+                    _id:"1.4",
+                    name:"TotalCounter",
+                    include:false
+                },{
+                    _id:"1.5",
+                    name:"TotalCounterStart",
+                    include:true
                 }]
             }
         ]

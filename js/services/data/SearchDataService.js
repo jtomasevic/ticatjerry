@@ -11,7 +11,7 @@ chiselApp.factory("searchDataService", function($http, $q, $cookies){
                 },
                 user_id:$cookies.user_id
             };
-            if(is_test_env) {
+            if(!is_test_env) {
                 $http({
                     url: _getApiUrl("servicerequest/search"),
                     method: 'POST',
