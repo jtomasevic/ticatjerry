@@ -55,8 +55,14 @@ chiselApp.controller('PrinterController',
             searchDataService.search($scope.searchCriteria)
                 .then(function(data){
                     console.log("search result", data);
+                    $scope.searchResult = data.body.result;
                 });
             console.log($scope.searchCriteria)
+        }
+        // configure table view for printing
+        // toggle column to include/exclude from preview
+        $scope.toggleColumnConfig = function(colConfig){
+            colConfig.include = !colConfig.include;
         }
 
         // print
@@ -250,26 +256,118 @@ chiselApp.controller('PrinterController',
                 columns:[{
                     _id:"1.1",
                     name:"ServiceRequestNumber",
+                    display_name:"No.",
                     include:true
                 },{
                     _id:"1.2",
                     name:"ServiceRequestState",
-                    include:true
-                },{
-                    _id:"1.3",
-                    name:"SolutionComment",
+                    display_name:"State",
                     include:true
                 },{
                     _id:"1.4",
-                    name:"TotalCounter",
+                    name:"ContactPersonName",
+                    display_name:"Contact person",
                     include:false
                 },{
                     _id:"1.5",
-                    name:"TotalCounterStart",
+                    name:"DateTimeOpened",
+                    display_name:"Opened",
+                    include:true
+                },{
+                    _id:"1.6",
+                    name:"DateTimeAllocated",
+                    display_name:"Allocated",
+                    include:true
+                },{
+                    _id:"1.7",
+                    name:"DateTimeDispatched",
+                    display_name:"Dispatched",
                     include:true
                 }]
-            }
-        ]
+            },{
+                _id:"2",
+                name: "Customer",
+                columns:[{
+                    _id:"2.1",
+                    name:"Name",
+                    display_name:"Customer",
+                    include:true
+                },{_id:"2.2",
+                    name:"FullName",
+                    display_name:"Full name",
+                    include:false
+                },{_id:"2.3",
+                    name:"Address",
+                    display_name:"Address",
+                    include:true
+                },{_id:"2.4",
+                    name:"City",
+                    display_name:"City",
+                    include:false
+                },{_id:"2.5",
+                    name:"PhoneNum",
+                    display_name:"Phone",
+                    include:false
+                },{_id:"2.6",
+                    name:"Fax",
+                    display_name:"Fax",
+                    include:false
+                },{_id:"2.7",
+                    name:"Email",
+                    display_name:"Email",
+                    include:true
+                }]
+            },{
+                _id: "3",
+                name: "Machine",
+                columns:[{
+                    _id:"3.1",
+                    name:"Name",
+                    display_name:"Machine",
+                    include:true
+                },{_id:"3.2",
+                    name:"SerialNumber",
+                    display_name:"Serial No.",
+                    include:true
+                },{_id:"3.3",
+                    name:"AssetNumber",
+                    display_name:"Asset No.",
+                    include:true
+                },{_id:"3.4",
+                    name:"PreciseLocation",
+                    display_name:"Location.",
+                    include:false
+                },{_id:"3.5",
+                    name:"InstallationDate",
+                    display_name:"Installation date",
+                    include:false
+                }]
+            },{
+                _id: "4",
+                name: "Agreement",
+                columns:[{
+                    _id:"4.1",
+                    name:"AgreementNumber",
+                    display_name:"Agr Number",
+                    include:true
+                },{_id:"4.2",
+                    name:"AgreementEndDate",
+                    display_name:"Expiration date",
+                    include:true
+                },{_id:"4.3",
+                    name:"C30days",
+                    display_name:"C30 days",
+                    include:false
+                },{_id:"4.4",
+                    name:"C7days",
+                    display_name:"C7 days",
+                    include:false
+                },{_id:"4.5",
+                    name:"C1days",
+                    display_name:"C1 days",
+                    include:false
+                }]
+            }]
     }
 )
 

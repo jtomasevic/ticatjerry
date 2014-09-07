@@ -1,0 +1,54 @@
+<div ng-show="searchCriteria.searchFor!=null" class="col-xs-12">
+    <table class="table table-hover">
+        <thead>
+            <tr >
+                <th ng-repeat="srCol in tableConfig[0].columns" ng-show="srCol.include" class="sr-cell">
+                    {{srCol.display_name}}
+                </th>
+                <th ng-repeat="cusCol in tableConfig[1].columns" ng-show="cusCol.include" class="cus-cell">
+                    {{cusCol.display_name}}
+                </th>
+                <th ng-repeat="mchCol in tableConfig[2].columns" ng-show="mchCol.include" class="mch-cell">
+                    {{mchCol.display_name}}
+                </th>
+                <th ng-repeat="agrCol in tableConfig[3].columns" ng-show="agrCol.include" class="agr-cell">
+                    {{agrCol.display_name}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="r in searchResult">
+                <td ng-repeat="srCol in tableConfig[0].columns" ng-show="srCol.include" class="sr-cell">
+                    {{ r.request[srCol.name] }}
+                </td>
+                <td ng-repeat="cusCol in tableConfig[1].columns" ng-show="cusCol.include" class="cus-cell">
+                    {{ r.customer[cusCol.name] }}
+                </td>
+                <td ng-repeat="mchCol in tableConfig[2].columns" ng-show="mchCol.include" class="mch-cell">
+                    {{ r.machine[mchCol.name] }}
+                </td>
+                <td ng-repeat="agrCol in tableConfig[3].columns" ng-show="agrCol.include" class="agr-cell">
+                    {{ r.agreement[agrCol.name] }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .sr-cell{
+        background-color: #f9f9f9;
+    }
+    .cus-cell{
+        /*background-color: #DFDFDF;*/
+        background-color: #f4f4e7;
+    }
+    .mch-cell{
+        /*background-color: #CFCFCF;*/
+        background-color: #e6e6f1;
+    }
+    .agr-cell{
+        /*background-color: #BFBFBF;*/
+        background-color: #fcf2f2;
+    }
+</style>

@@ -1,43 +1,58 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-show="searchCriteria.searchFor!=null">
+    <h4>Table column configurator</h4>
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="item in tableConfig">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                {{item.name}} <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="col in item.columns" class="col-sm-12">
-                    <a>{{col.name}}</a>
+        <div class="col-xs-12 " >
+            <div class="panel-group" id="column-configurator">
+                <div class="entity-columns">
+                    <div ng-repeat="item in tableConfig">
+                        <a  data-toggle="collapse" data-parent="#column-configurator" href="#columns-{{item._id}}" target="_self" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 entity-name" >
+                            {{item.name}}
+                        </a>
+                        <div  class="col-xs-12 ">
+                            <div id="columns-{{item._id}}" class="columns-container columns col-xs-12 col-sm-12 col-md-4 col-lg-4 panel-collapse collapse" >
+                                <ul class="list-group" >
+                                    <li ng-repeat="col in item.columns" class="list-group-item ">
+                                        <a class="">{{col.display_name}}</a>
+                                        <div class="">
+                                            <a href="" ng-click="toggleColumnConfig(col)" class="sub-set-on-off pull-right ">
+                                                <i class="fa fa-check lg " ng-show="col.include"></i>
+                                                <i class="fa fa-square-o choff lg" ng-show="!col.include"></i>
+                                            </a>
+                                        </div>
+                                    </li>
 
-                    <a href="" ng-click="toggleColumnConfig(col)" class="sub-set-on-off pull-right ">
-                        <i class="fa fa-check lg " ng-show="col.include"></i>
-                        <i class="fa fa-square-o choff lg" ng-show="!col.include"></i>
-                    </a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                </li>
+                </div>
+            </div>
 
-            </ul>
         </div>
     </div>
 </div>
-<div class="panel-group" id="accordion">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" target="_self">
-                Collapsible Group Item #1
-            </a>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" target="_self">
-                Collapsible Group Item #1
-            </a>
-        </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in">
-        <div class="panel-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
-        <div class="panel-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-    </div>
-</div>
+
+
+<style>
+    .entity-columns{
+        margin-left: 0px;
+    }
+/*copy from nav-bar-printer.html*/
+    .sub-set-on-off{
+        margin-top: -23px;
+        margin-right: 8px;
+        font-size: 16px;
+        color: #34383c;
+    }
+    .entity-name{
+        padding: 8px;
+        color: #34383c;
+    }
+    .entity-columns a:hover {
+        text-decoration: none;
+    }
+    .columns-container{
+        padding-left: 0px;
+    }
+</style>
