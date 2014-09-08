@@ -7,7 +7,7 @@
         <span id="page-title">Search:</span>
         <div class="search-box">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="for: {{searchCriteria.searchFor.title}}">
+                <input type="text" class="form-control" placeholder="for: {{searchCriteria.searchFor.title}}" ng-model="searchCriteria.globalFilter">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="background-color: #5BC0DE; border: solid 1px #5BC0DE; color:white"> <span class="caret"></span></button>
                     <button type="button" class="btn btn-default" ng-click="search()" style="background-color: #F75E00; border: solid 1px #5BC0DE; color:white"> <span class="glyphicon glyphicon-search"></span> </button>
